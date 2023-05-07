@@ -4,12 +4,13 @@
     "name": "Jon",
     "coordinates": {
       "x": 10.0,
-      "y": 1234
+      "y": 1234.0
     },
     "creationDate": "2023-01-28",
     "price": 1234,
     "type": "BUDGETARY",
     "event": {
+      "id": 1,
       "name": "Burning man",
       "date": "2023-08-28",
       "minAge": 12
@@ -20,12 +21,13 @@
     "name": "Anna",
     "coordinates": {
       "x": 42.0,
-      "y": 725
+      "y": 725.0
     },
     "creationDate": "2023-02-17",
     "price": 750,
     "type": "CHEAP",
     "event": {
+      "id": 2,
       "name": "White Nights",
       "date": "2023-06-15",
       "minAge": 16
@@ -33,17 +35,52 @@
   },
   {
     "id": 3,
+    "name": "Alexa",
+    "coordinates": {
+      "x": 49.0,
+      "y": 750.0
+    },
+    "creationDate": "2023-02-17",
+    "price": 750,
+    "type": "CHEAP",
+    "event": {
+      "id": 2,
+      "name": "White Nights",
+      "date": "2023-06-15",
+      "minAge": 16
+    }
+  },
+  {
+    "id": 4,
     "name": "Boris",
     "coordinates": {
       "x": 440.0,
-      "y": 6845
+      "y": 6845.0
     },
     "creationDate": "2023-01-14",
     "price": 1500,
     "type": "USUAL",
     "event": {
+      "id": 3,
       "name": "BibaBoba",
       "date": "2023-05-01",
+      "minAge": 18
+    }
+  },
+  {
+    "id": 5,
+    "name": "Alexey",
+    "coordinates": {
+      "x": 334.0,
+      "y": 521.0
+    },
+    "creationDate": "2023-05-04",
+    "price": 5111,
+    "type": "VIP",
+    "event": {
+      "id": 5,
+      "name": "Para",
+      "date": "2004-01-01",
       "minAge": 18
     }
   }

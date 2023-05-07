@@ -19,7 +19,7 @@ public class HelperUtil {
         return true;
     }
     public static boolean checkString(String s){
-        if (s.equals("null")){
+        if (s instanceof String){
             return true;
         }
         return false;
@@ -160,6 +160,30 @@ public class HelperUtil {
         if (Objects.equals(eventName,"null") || eventName == null || eventName.isEmpty() || eventName.isBlank()) throw new NullArgumentException("имя события пустое");
         if (eventDate == null)throw new NullArgumentException("нулевое время у события");
         if (minAge <= 0) throw new IllegalArgumentException("минимальный возраст <= 0");
+    }
+
+    public static double inputDouble() {
+        Scanner scanner = new Scanner(System.in);
+        double result;
+        while (true) {
+            String s = scanner.next();
+            if (checkDouble(s)) {
+                result = Double.parseDouble(s);
+                break;
+            } else {
+                System.err.println("нужен double формат данных");
+            }
+        }
+        return result;
+    }
+
+    private static boolean checkDouble(String s) {
+        try {
+            double a = Double.parseDouble(s);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 }
 

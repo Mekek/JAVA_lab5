@@ -36,7 +36,7 @@ public class ExecuteScript extends Command{
        }
        if (!new File(filename).exists()){
            filenames.clear();
-           throw new IllegalArgumentException("нет такого файла");
+           throw new IllegalArgumentException("файл с таким названием не существует");
        }
        if (! new File(filename).isFile()){
            filenames.clear();
@@ -56,20 +56,20 @@ public class ExecuteScript extends Command{
             throw new RuntimeException(e);
         }
         try {
-            for (int i = 0; i<arrayListLines.size(); i++){
+            for (int i = 0; i < arrayListLines.size(); i++){
                 CommandResult command = factory.create(arrayListLines.get(i));
                 boolean flag = true;
                 if (command.getCommand() instanceof Add && command.getArgs().length == 0){
-                    if ((flag && Factory.checkCommand(arrayListLines.get(i+1)))) throw new RuntimeException("в add не хватает данных");
+                    if ((flag && Factory.checkCommand(arrayListLines.get(i + 1)))) throw new RuntimeException("в add не хватает данных");
                     flag = false;
                     if (i < arrayListLines.size()-1 && !Factory.checkCommand(arrayListLines.get(i+1))){
                         flag = false;
-                        String addWorker = "";
-                        for (int j = 0; j<13; j++){
+                        String addTicket = "";
+                        for (int j = 0; j < 9; j++){
                             i++;
-                            addWorker += arrayListLines.get(i) + ";";
+                            addTicket += arrayListLines.get(i) + ";";
                         }
-                        String[] strings = {addWorker};
+                        String[] strings = {addTicket};
                         command.setArgs(strings);
                     }
                 }

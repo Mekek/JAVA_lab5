@@ -3,6 +3,7 @@ package org.example.model;
 import org.example.Exception.NullArgumentException;
 
 import java.util.Objects;
+import java.util.Vector;
 
 public class Ticket implements Comparable<Ticket>{
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -118,6 +119,27 @@ public class Ticket implements Comparable<Ticket>{
             if (getEvent().getName().length() > 1847) throw  new IllegalArgumentException("некорректный формат полного имени");
             if (getEvent().getDate() == null) throw new NullArgumentException("нулевое время");
             if (getEvent().getMinAge() <= 0) throw  new IllegalArgumentException("минимальный возраст <= 0");
+    }
+
+    public void makeEventId(Ticket ticket, Vector<Ticket> tickets) {
+        for (Ticket ticket1 : tickets) {
+            if (ticket1.getEvent().getName() == ticket.getEvent().getName() || ticket1.getEvent().getDate() == ticket.getEvent().getDate() || ticket1.getEvent().getMinAge() == ticket.getEvent().getMinAge()) {
+                ticket.getEvent().setId(ticket1.getEvent().getId());
+
+                break;
+            }
+        }
+
+        if (ticket.getEvent().getId() == 0) {
+            // ищем макс значение eventId
+            int maxEventId = 0;
+            for (Ticket ticket1 : tickets) {
+                if (ticket1.getEvent().getId() > maxEventId) {
+                    maxEventId = ticket1.getEvent().getId();
+                }
+            }
+            ticket.getEvent().setId(maxEventId + 1);
+        }
     }
 
 //    public void setEventId(Integer eventId) {

@@ -10,6 +10,7 @@ import org.example.model.*;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Vector;
 
 public class FileManager {
@@ -41,12 +42,35 @@ public class FileManager {
             throw new IdException();
         }
         boolean check = true;
-//        System.out.println("cringe_start");
 
-        Integer eventIdCounter = 1;
+//        System.out.println("cringe_start");
+//        Integer maxEventId = 0;
         for (Ticket ticket : tickets){
-            ticket.getEvent().setId(eventIdCounter);
-            eventIdCounter ++;
+            if (ticket.getEvent().getId() == 0) {
+                ticket.makeEventId(ticket, tickets);
+
+//                for (Ticket ticket1 : tickets) {
+//                    if (Objects.equals(ticket1.getEvent().getName(), ticket.getEvent().getName()) || Objects.equals(ticket1.getEvent().getDate(), ticket.getEvent().getDate()) || Objects.equals(ticket1.getEvent().getMinAge(), ticket.getEvent().getMinAge())) {
+//                        ticket.getEvent().setId(ticket1.getEvent().getId());
+//                        break;
+//                    }
+//                }
+//
+//                if (ticket.getEvent().getId() == 0) {
+//                    // ищем макс значение eventId
+//                    for (Ticket ticket1 : tickets) {
+//                        if (ticket1.getEvent().getId() > maxEventId) {
+//                            maxEventId = ticket1.getEvent().getId();
+//                        }
+//                    }
+//
+//                    ticket.getEvent().setId(maxEventId + 1);
+//                }
+            }
+
+
+
+
             ticket.checkTicket();
         }
 //        System.out.println("cringe_finish");

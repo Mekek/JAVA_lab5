@@ -1,15 +1,2 @@
-info
-add
-100
-Jonn
-11.0
-1234
-08-08-2008
-123
-08-08-2008
-DIRECTOR
-1
-Jon Miller
-660000
-PUBLIC
-12345
+add; Mike; 10.0; 50.0; 1000; 1; sfksjf; 01-12-2004; 19
+show

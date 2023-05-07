@@ -32,12 +32,22 @@ public class Factory {
         commandMap.put("print_field_ascending_event", new PrintFieldAscendingEvent(collection));
         commandMap.put("help", new Help());
         commandsWithArgs = new HashSet<>();
+//        commandsWithArgs.add("update");
+//        commandsWithArgs.add("remove_by_id");
+//        commandsWithArgs.add("remove_greater");
+//        commandsWithArgs.add("execute_script");
+//        commandsWithArgs.add("remove_all_by_salary");
+//        commandsWithArgs.add("save_as");
+//        commandsWithArgs.add("remove_at");
+
+//        commandsWithArgs.add("add");
         commandsWithArgs.add("update");
-        commandsWithArgs.add("remove_by_id");
-        commandsWithArgs.add("remove_greater");
         commandsWithArgs.add("execute_script");
-        commandsWithArgs.add("remove_all_by_salary");
-        commandsWithArgs.add("save_as");
+        commandsWithArgs.add("remove_at");
+        commandsWithArgs.add("add_if_max");
+        commandsWithArgs.add("add_if_min");
+        commandsWithArgs.add("remove_all_by_event_id");
+        commandsWithArgs.add("count_by_price");
         }
         public CommandResult create(String s){
             String[] a = s.split(" ");
@@ -48,7 +58,9 @@ public class Factory {
                 if (a.length > 2 || a.length == 1) throw new WrongAmountOfElementsException();
                 args1 = new String[1];
                 args1[0] = a[1];
-            } else if (a.length > 1) throw new WrongAmountOfElementsException();
+            } else if (a.length > 1) {
+                throw new WrongAmountOfElementsException();
+            }
             Command command = commandMap.get(command1);
             if (command == null) {
                 throw new UnknownCommandException();
@@ -57,7 +69,7 @@ public class Factory {
             return new CommandResult(command, args1);
         }
     public static boolean checkCommand(String s) {
-        return !HelperUtil.checkLong(s);
+        return !HelperUtil.checkString(s);
     }
 }
 
