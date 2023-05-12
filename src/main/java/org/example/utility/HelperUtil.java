@@ -20,7 +20,7 @@ public class HelperUtil {
         return true;
     }
     public static boolean checkString(String s){
-        if (s instanceof String){
+        if (s != null){
             return true;
         }
         return false;
@@ -135,7 +135,7 @@ public class HelperUtil {
                 ticketType = Add.createTicketType(s);
                 break;
             } else {
-                System.err.println("введенное число находится вне диапозона");
+                System.err.println("введенное число находится вне диапазона");
             }
 
         }
@@ -182,7 +182,7 @@ public class HelperUtil {
                 result = LocalDate.parse(s, formatter2);
                 break;
             } else {
-                System.err.println("некорректаня дата");
+                System.err.println("некорректная дата");
             }
         }
         return result;

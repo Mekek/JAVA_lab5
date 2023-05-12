@@ -60,7 +60,7 @@ public class Ticket implements Comparable<Ticket>{
         if (price != null) {
             return price;
         }
-        return Float.valueOf(0);
+        return (float) 0;
     }
 
     public void setPrice(Float price) {

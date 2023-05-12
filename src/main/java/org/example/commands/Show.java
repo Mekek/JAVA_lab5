@@ -20,7 +20,7 @@ public class Show extends Command{
     @Override
     public void execute(String[] args) {
         if (collection.countElements() == 0) throw new EmptyCollectionException();
-        for (Ticket ticket : collection.getTickets()){
+        for (Ticket ticket : Collection.getTickets()){
             System.out.println(ticket);
         }
     }

@@ -3,7 +3,7 @@ package org.example.commands;
 import org.example.file.Collection;
 
 /**
- * The 'RemoveAt' class is a command that remove element by it's index in collection
+ * The 'RemoveAt' class is a command that remove element by its index in collection
  */
 public class RemoveAt extends Command{
     private Collection collection;
@@ -12,7 +12,7 @@ public class RemoveAt extends Command{
         this.collection = collection;
     }
     /**
-     * Remove an ticket from the collection by its position
+     * Remove a ticket from the collection by its position
      */
     @Override
     public void execute(String[] args) {

@@ -23,7 +23,7 @@ public class Info extends Command{
         }
         System.out.println("Информация о коллекции: ");
         System.out.println("Тип коллекции: " + collection.getType());
-        System.out.println("Количество элементов: " + collection.getTickets().size());
+        System.out.println("Количество элементов: " + Collection.getTickets().size());
         System.out.println(""+ collection.getDateInit());
         if (collection.getDateSave() == null){
             System.out.println("Коллекция не сохранена");

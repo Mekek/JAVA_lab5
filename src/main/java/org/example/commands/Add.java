@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
- * The class is responsible for adding an ticket to the collection
+ * The class is responsible for adding a ticket to the collection
  */
 public class Add extends Command{
     private Collection collection;
@@ -18,7 +18,7 @@ public class Add extends Command{
         this.collection = collection;
     }
     /**
-     * The function adds an ticket to the collection
+     * The function adds a ticket to the collection
      */
     @Override
     public void execute(String[] args) {

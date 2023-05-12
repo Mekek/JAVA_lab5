@@ -55,17 +55,17 @@ public class Main {
 
         Scanner scanner = new Scanner(in);
         Factory factory = new Factory(collection);
-        boolean workingProsess = true;
-        while (workingProsess) {
+        boolean workingProcess = true;
+        while (workingProcess) {
             try {
                 if (scanner.hasNextLine()){
                     String s = scanner.nextLine();
                     CommandResult command = factory.create(s);
                     command.getCommand().execute(command.getArgs());
-                    workingProsess = command.getCommand().getFlag();
+                    workingProcess = command.getCommand().getFlag();
                 }
                 else {
-                    workingProsess = false;
+                    workingProcess = false;
                     System.err.println("не надо вводить ctrl + D, это не поможет");
                 }
             } catch (Exception e){
