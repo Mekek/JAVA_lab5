@@ -9,6 +9,10 @@ import org.example.commands.*;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * @author Mikhail Kadilov
+ * The 'Factory' class allows you to work with commands
+ */
 public class Factory {
     private final HashMap<String, Command> commandMap;
     private final HashSet<String> commandsWithArgs;

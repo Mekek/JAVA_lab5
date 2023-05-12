@@ -5,6 +5,7 @@ import org.example.file.Collection;
 import org.example.utility.HelperUtil;
 
 /**
+ * @author Mikhail Kadilov
  * The `CountByPrice` class is a command that counts all elements in collection with the same price, as the argument
  */
 public class CountByPrice extends Command{

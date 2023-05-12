@@ -2,6 +2,10 @@ package org.example;
 
 import org.example.commands.Command;
 
+/**
+ * @author Mikhail Kadilov
+ * The 'CommandResult' class allows you to work with commands
+ */
 public class CommandResult {
     private Command command;
     private String[] args;

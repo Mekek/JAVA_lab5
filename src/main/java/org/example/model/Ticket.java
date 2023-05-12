@@ -4,6 +4,11 @@ import org.example.exception.NullArgumentException;
 
 import java.util.Objects;
 
+
+/**
+ * @author Mikhail Kadilov
+ * The 'Ticket' class created to work with tickets
+ */
 public class Ticket implements Comparable<Ticket>{
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой

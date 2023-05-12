@@ -4,6 +4,7 @@ import org.example.exception.EmptyCollectionException;
 import org.example.file.Collection;
 import org.example.model.Ticket;
 /**
+ * @author Mikhail Kadilov
  * The `ShowCommand` class is a command that prints all the elements of the collection in string
  * representation
  */

@@ -13,6 +13,10 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Vector;
 
+/**
+ * @author Mikhail Kadilov
+ * The FileManager class manages file handling
+ */
 public class FileManager {
     private String fileName;
 

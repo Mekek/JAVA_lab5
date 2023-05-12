@@ -4,6 +4,7 @@ import org.example.file.Collection;
 import org.example.model.Ticket;
 
 /**
+ * @author Mikhail Kadilov
  * The 'RemoveById' class is command that remove a ticket from the collection
  */
 public class RemoveById extends Command{
@@ -13,7 +14,7 @@ public class RemoveById extends Command{
         this.collection = collection;
     }
     /**
-     * Remove a ticket from the collection
+     * Remove a ticket from the collection by its id
      */
     @Override
     public void execute(String[] args) {

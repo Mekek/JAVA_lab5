@@ -4,6 +4,7 @@ import org.example.file.Collection;
 import org.example.model.Ticket;
 
 /**
+ * @author Mikhail Kadilov
  * The class is used to update the value of the collection element whose id is equal to the given one
  */
 public class Update extends Command {
@@ -12,10 +13,10 @@ public class Update extends Command {
     public Update(Collection collection) {
         this.collection = collection;
     }
-/**
- * The function takes an argument, which is the id of the event that will be updated.
- * @params argument The argument that the user entered.
- */
+    /**
+     * The function takes an argument, which is the id of the event that will be updated.
+     * @param args id of ticket in collection.
+     */
     @Override
     public void execute(String[] args) {
         if (args.length == 1){

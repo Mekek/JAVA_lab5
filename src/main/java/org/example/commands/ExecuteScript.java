@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 /**
+ * @author Mikhail Kadilov
  * The 'execute_script' command.
  * Execute the script from the file.
  */
@@ -25,6 +26,7 @@ public class ExecuteScript extends Command{
     }
     /**
      * Execute a script
+     * @param args the arguments passed to the command.
      */
     @Override
     public void execute(String[] args) {

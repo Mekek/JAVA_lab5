@@ -1,7 +1,8 @@
 package org.example.exception;
+
 /**
- * This class is used to throw an exception when the number of elements in a list is not equal to the
- * number of elements in the array
+ * @author Mikhail Kadilov
+ * This is an exception that can be thrown while the program is running.
  */
 public class WrongAmountOfElementsException extends RuntimeException{
     public WrongAmountOfElementsException() {

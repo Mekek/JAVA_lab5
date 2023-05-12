@@ -1,5 +1,9 @@
 package org.example.commands;
 
+/**
+ * @author Mikhail Kadilov
+ * This class defines the behavior of commands
+ */
 public abstract class Command {
     public abstract void execute(String [] args);
     private boolean flag = true;

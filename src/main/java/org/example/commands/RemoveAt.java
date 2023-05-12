@@ -3,6 +3,7 @@ package org.example.commands;
 import org.example.file.Collection;
 
 /**
+ * @author Mikhail Kadilov
  * The 'RemoveAt' class is a command that remove element by its index in collection
  */
 public class RemoveAt extends Command{
@@ -18,7 +19,7 @@ public class RemoveAt extends Command{
     public void execute(String[] args) {
         if (args.length == 1) {
             int index = Integer.parseInt(args[0]);
-            if (index <= collection.getSize() && index >= 0) {
+            if (index <= collection.countElements() && index >= 0) {
                 collection.removeAt(index);
             }
             else {

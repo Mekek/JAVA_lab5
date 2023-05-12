@@ -9,7 +9,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Scanner;
 
+/**
+ * @author Mikhail Kadilov
+ * The `TicketBuilder` class that allows you to create event and ticket objects
+ */
 public class TicketBuilder{
+    /**
+     * Returns ticket object
+     */
     public static Ticket create(Integer identifier){
         Scanner scanner = new Scanner(System.in);
         Integer id = identifier;
@@ -26,6 +33,10 @@ public class TicketBuilder{
         Ticket ticket = new Ticket(id, name, coordinates, creationDate, price, ticketType, event);
         return ticket;
     }
+
+    /**
+     * Returns event object
+     */
     public static Event createEvent() {
         Scanner scanner = new Scanner(System.in);
 //        Integer eventId = identifier;
@@ -41,6 +52,9 @@ public class TicketBuilder{
         return new Event(eventId, eventName, eventDate, minAge);
     }
 
+    /**
+     * Returns different id for different events
+     */
     public static int makeEventId(String eventName, LocalDate eventDate, Integer minAge) {
         for (Ticket ticket : org.example.file.Collection.getTickets()) {
             if (Objects.equals(ticket.getEvent().getName(), eventName) || ticket.getEvent().getDate() == eventDate || ticket.getEvent().getMinAge() == minAge) {
@@ -59,7 +73,9 @@ public class TicketBuilder{
         return maxEventId + 1;
     }
 
-
+    /**
+     * Returns coordinates object
+     */
     private static Coordinates createCoordinates(){
         System.out.println("Введите x(double):");
         double x = HelperUtil.inputDoubleX();

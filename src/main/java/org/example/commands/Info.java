@@ -3,6 +3,7 @@ package org.example.commands;
 import org.example.file.Collection;
 
 /**
+ * @author Mikhail Kadilov
  * The 'Info' class provides information about the collection.
  */
 public class Info extends Command{

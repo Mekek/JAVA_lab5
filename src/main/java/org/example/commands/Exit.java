@@ -1,6 +1,7 @@
 package org.example.commands;
 
 /**
+ * @author Mikhail Kadilov
  * Class 'exit'.
  * Terminates the program.
  */

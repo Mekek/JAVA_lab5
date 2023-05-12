@@ -10,6 +10,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Scanner;
 
+
+/**
+ * @author Mikhail Kadilov
+ * The 'HelperUtil' class allows you to work with different data types and check data for restrictions
+ */
 public class HelperUtil {
     public static boolean checkInteger(String s) {
         try {
@@ -89,6 +94,9 @@ public class HelperUtil {
         return result;
     }
 
+    /**
+     * Returns correct y-coordinate value
+     */
     public static float inputFloatY() {
         Scanner scanner = new Scanner(System.in);
         float result;
@@ -104,6 +112,9 @@ public class HelperUtil {
         return result;
     }
 
+    /**
+     * Returns correct price value
+     */
     public static float inputPrice() {
         Scanner scanner = new Scanner(System.in);
         float result;

@@ -1,6 +1,7 @@
 package org.example.commands;
 
 /**
+ * @author Mikhail Kadilov
  * The `HelpCommand` class is a command that displays the help of the available commands
  */
 public class Help extends Command{

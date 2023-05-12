@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * @author Mikhail Kadilov
  *  The 'PrintFieldAscendingEvent' class is a command that prints all event.
  */
 public class PrintFieldAscendingEvent extends Command {
@@ -17,6 +18,9 @@ public class PrintFieldAscendingEvent extends Command {
         this.collection = collection;
     }
 
+    /**
+     * prints events in ascending order
+     */
     @Override
     public void execute(String[] args) {
         if (!(args.length < 1)) throw new WrongAmountOfElementsException();

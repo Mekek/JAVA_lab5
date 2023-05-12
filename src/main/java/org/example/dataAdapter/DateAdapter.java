@@ -6,6 +6,10 @@ import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author Mikhail Kadilov
+ * TThis class is designed to work with dates
+ */
 public class DateAdapter implements JsonSerializer<LocalDate>, JsonDeserializer<LocalDate> {
     @Override
     public JsonElement serialize(LocalDate date, Type typeOfSrc, JsonSerializationContext context) {

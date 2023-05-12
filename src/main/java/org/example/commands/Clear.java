@@ -3,6 +3,7 @@ package org.example.commands;
 import org.example.file.Collection;
 
 /**
+ * @author Mikhail Kadilov
  * Clear the collection
  */
 public class Clear extends Command{
@@ -11,8 +12,9 @@ public class Clear extends Command{
     public Clear(Collection collection) {
         this.collection = collection;
     }
+
     /**
-     * Clear the collection
+     * The function clears the collection
      */
     @Override
     public void execute(String[] args) {

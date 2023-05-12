@@ -1,5 +1,9 @@
 package org.example.model;
 
+/**
+ * @author Mikhail Kadilov
+ * The 'Coordinates' class created to work with coordinates
+ */
 public class Coordinates {
     private Double x; //Значение поля должно быть больше -222, Поле не может быть null
     private Float y; //Поле не может быть null

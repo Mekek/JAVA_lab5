@@ -5,7 +5,8 @@ import org.example.file.Collection;
 import org.example.model.Event;
 
 /**
- * The 'RemoveAllByEventId' class is a command that
+ * @author Mikhail Kadilov
+ * The 'RemoveAllByEventId' class is a command that removes all tickets by event
  */
 public class RemoveAllByEvent extends Command{
     private Collection collection;
@@ -14,6 +15,9 @@ public class RemoveAllByEvent extends Command{
         this.collection = collection;
     }
 
+    /**
+     * Removes all tickets in collection with same event
+     */
     @Override
     public void execute(String[] args) {
         if (collection.countElements() == 0) throw new EmptyCollectionException();

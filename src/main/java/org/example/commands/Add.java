@@ -1,6 +1,5 @@
 package org.example.commands;
 
-import org.example.exception.WrongTypeException;
 import org.example.file.Collection;
 import org.example.utility.HelperUtil;
 import org.example.model.*;
@@ -10,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
+ * @author Mikhail Kadilov
  * The class is responsible for adding a ticket to the collection
  */
 public class Add extends Command{
@@ -70,6 +70,9 @@ public class Add extends Command{
         }
     }
 
+    /**
+     * The function returns an event object
+     */
     private Event createEvent() {
         Scanner scanner = new Scanner(System.in);
         Integer eventId = 0;
@@ -85,6 +88,9 @@ public class Add extends Command{
         return new Event(eventId, eventName, eventDate, minAge);
     }
 
+    /**
+     * The function returns coordinates object
+     */
     private Coordinates createCoordinates(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите x(double):");
@@ -93,6 +99,10 @@ public class Add extends Command{
         float y = HelperUtil.inputFloatY();
         return new Coordinates(x,y);
     }
+
+    /**
+     * The function returns ticketType object
+     */
     public static TicketType createTicketType(String s){
         TicketType ticketType;
         if (s.equals("null")){
