@@ -7,6 +7,7 @@ import org.example.file.Collection;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -66,8 +67,9 @@ public class ExecuteScript extends Command{
                     if (i < arrayListLines.size()-1 && !Factory.checkCommand(arrayListLines.get(i+1))){
                         flag = false;
                         String addTicket = "";
-                        for (int j = 0; j < 9; j++){
+                        for (int j = 0; j < 8; j++){
                             i++;
+//                            System.out.println(arrayListLines.get(i));
                             addTicket += arrayListLines.get(i) + ";";
                         }
                         String[] strings = {addTicket};

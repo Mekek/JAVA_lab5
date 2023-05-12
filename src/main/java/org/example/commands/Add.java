@@ -1,5 +1,7 @@
 package org.example.commands;
 
+import org.example.exception.WrongAddArgumentException;
+import org.example.exception.WrongTypeException;
 import org.example.file.Collection;
 import org.example.utility.HelperUtil;
 import org.example.model.*;
@@ -22,6 +24,11 @@ public class Add extends Command{
      */
     @Override
     public void execute(String[] args) {
+//        System.out.println("Argument count: " + args.length);
+//        for (int i = 0; i < args.length; i++) {
+//            System.out.println("Argument " + i + ": " + args[i]);
+//        }
+//        System.out.println(args[0].split(";").length);
         if (args.length == 0) {
             Scanner scanner = new Scanner(System.in);
             Integer id = collection.maxId() + 1;
@@ -38,35 +45,50 @@ public class Add extends Command{
 
             ticket.getEvent().setId(TicketBuilder.makeEventId(event.getName(), event.getDate(), event.getMinAge()));
             collection.add(ticket);
-        }
-        else {
+        } else if (args[0].split(";").length == 8) {
 
+            String[] params = args[0].split(";");
+
+            Integer id = collection.maxId() + 1;
+
+            String name = params[0];
+
+            double x = Double.parseDouble(params[1]);
+
+            if (x <= -222) throw new WrongAddArgumentException();
+            float y = Float.parseFloat(params[2]);
+
+            Coordinates coordinates = new Coordinates(x,y);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate creationDate = LocalDate.now();
+            Float price = Float.valueOf(params[3]);
+
+            if (price < 0) throw new WrongAddArgumentException();
+            TicketType ticketType = createTicketType(params[4]);
+            boolean typeFlag = false;
+            for (TicketType ticketType1 : TicketType.values()) {
+                if (ticketType1 == ticketType) {
+                    typeFlag = true;
+                }
+            }
+            if (!typeFlag) throw new WrongAddArgumentException();
+
+            String eventName = params[5];
+            if (params[5].isEmpty() || params[5].equals("null")) throw new WrongTypeException("билет не может быть null или пустым");
+            formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate eventDate = LocalDate.parse(params[6], formatter);
+            int minAge = Integer.parseInt(params[7]);
+            int eventId = TicketBuilder.makeEventId(eventName, eventDate, minAge);
+            if (minAge <= 0 ) throw new WrongTypeException("minAge должен быть положительным");
+
+            Event event = new Event(eventId, eventName, eventDate, minAge);
+            Ticket ticket = new Ticket(id, name, coordinates, creationDate, price, ticketType, event);;
+            ticket.getEvent().setId(TicketBuilder.makeEventId(event.getName(), event.getDate(), event.getMinAge()));
+            collection.add(ticket);
+
+        } else {
             System.err .println("Неверное количество аргументов");
-//            String[] params = args[0].split(";");
-//
-//            Integer id = collection.maxId() + 1;
-//
-//            String name = params[0];
-//            double x = Double.parseDouble(params[1]);
-//            float y = Float.parseFloat(params[2]);
-//            Coordinates coordinates = new Coordinates(x,y);
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//            LocalDate creationDate = LocalDate.parse(params[3], formatter);
-//            Float price = Float.valueOf(params[4]);
-//            TicketType ticketType = createTicketType(params[5]);
-//
-//            int eventId = collection.maxId() + 1;
-//            String eventName = params[6];
-//            if (params[6].isEmpty() || params[6].equals("null")) throw new WrongTypeException("билет не может быть null или пустым");
-//            formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//            LocalDate eventDate = LocalDate.parse(params[7], formatter);
-//            int minAge = Integer.parseInt(params[8]);
-//            if (minAge <= 0 ) throw new WrongTypeException("minAge должен быть положительным");
-//
-//            Event event = new Event(eventId, eventName, eventDate, minAge);
-//            Ticket ticket = new Ticket(id, name, coordinates, creationDate, price, ticketType, event);;
-//            ticket.getEvent().setId(TicketBuilder.makeEventId(event.getName(), event.getDate(), event.getMinAge()));
-//            collection.add(ticket);
+
         }
     }
 
