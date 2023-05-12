@@ -1,4 +1,4 @@
-package org.example.File;
+package org.example.file;
 
 import org.example.model.Event;
 import org.example.model.Ticket;
@@ -16,7 +16,7 @@ import java.util.Vector;
  * in the application
  */
 public class Collection {
-    private Vector<Ticket> tickets;
+    private static Vector<Ticket> tickets;
     private LocalDate dateSave;
     private FileManager fileManager;
     public LocalDate getDateSave() {
@@ -48,7 +48,7 @@ public class Collection {
      * This function returns the collection of tickets
      * @return The Vector of Tickets objects.
      */
-    public Vector<Ticket> getTickets(){
+    public static Vector<Ticket> getTickets(){
         return tickets;
     }
 
@@ -94,16 +94,6 @@ public class Collection {
         return tickets.stream().max(Comparator.comparing(Ticket::getId)).get().getId();
     }
 
-//    public Ticket getMax() {
-//        Ticket maxTicket = tickets.get(0);
-//        for (Ticket ticket : tickets){
-//            if (ticket.compareTo(maxTicket) == 1){
-//                maxTicket = ticket;
-//            }
-//        }
-//        return maxTicket;
-//    }
-
     public void addIfMax(Ticket ticket){
         Ticket maxTicket = tickets.get(0);
         for (Ticket anotherTicket : tickets){
@@ -131,7 +121,7 @@ public class Collection {
         return tickets.size();
     }
 
-    public void removeAt(Integer index){
+    public void removeAt(int index){
         tickets.remove(index);
     }
 
@@ -144,8 +134,8 @@ public class Collection {
         }
         return events;
     }
-    public void removeAllByEventId(Integer eventId) {
-        tickets.removeIf(ticket -> ticket.getEvent().getId() == eventId);
+    public void removeAllByEvent(Event event) {
+        tickets.removeIf(ticket -> (ticket.getEvent().getId() == event.getId()));
     }
 
     public int getSize() {
@@ -161,15 +151,4 @@ public class Collection {
         }
         return counter;
     }
-
-    /*
-    public void saveCollection(Collection collection){
-        try (PrintWriter collectionPrintWriter = new PrintWriter(new File(fileName))) {
-            collectionPrintWriter.println(gson.toJson(collection));
-        } catch (IOException e) {
-            System.out.println("Загрузочный файл не может быть открыт");
-        }
-    }
-    }
-     */
 }

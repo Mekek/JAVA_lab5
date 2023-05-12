@@ -54,20 +54,6 @@ public class Event implements Comparable<Event>{
      * @return - negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
      */
 
-//    public int compareTo(Event o) {
-//        if (o == null) {
-//            return 1;
-//        }
-//        int result = 0;
-//        if (this.name.length() > o.name.length()) {
-//            return -1;
-//        } else if (this.name.length() < o.name.length()) {
-//            return 1;
-//        }
-//        if (result == 0)
-//            return Integer.compare(this.minAge, o.minAge);
-//        return Integer.compare(this.id, o.id);
-//    }
 
     @Override
     public int compareTo(Event o) {

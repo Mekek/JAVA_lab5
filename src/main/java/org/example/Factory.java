@@ -1,9 +1,9 @@
 package org.example;
 
-import org.example.Exception.UnknownCommandException;
-import org.example.Exception.WrongAmountOfElementsException;
-import org.example.File.Collection;
-import org.example.Util.HelperUtil;
+import org.example.exception.UnknownCommandException;
+import org.example.exception.WrongAmountOfElementsException;
+import org.example.file.Collection;
+import org.example.utility.HelperUtil;
 import org.example.commands.*;
 
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class Factory {
         commandMap.put("info", new Info(collection));
         commandMap.put("add", new Add(collection));
         commandMap.put("show", new Show(collection));
-        commandMap.put("update_id", new UpdateId(collection));
+        commandMap.put("update", new Update(collection));
         commandMap.put("remove_by_id", new RemoveById(collection));
         commandMap.put("clear", new Clear(collection));
         commandMap.put("save", new Save(collection));
@@ -32,22 +32,12 @@ public class Factory {
         commandMap.put("print_field_ascending_event", new PrintFieldAscendingEvent(collection));
         commandMap.put("help", new Help());
         commandsWithArgs = new HashSet<>();
-//        commandsWithArgs.add("update");
-//        commandsWithArgs.add("remove_by_id");
-//        commandsWithArgs.add("remove_greater");
-//        commandsWithArgs.add("execute_script");
-//        commandsWithArgs.add("remove_all_by_salary");
-//        commandsWithArgs.add("save_as");
-//        commandsWithArgs.add("remove_at");
 
-//        commandsWithArgs.add("add");
-        commandsWithArgs.add("update");
         commandsWithArgs.add("execute_script");
         commandsWithArgs.add("remove_at");
-        commandsWithArgs.add("add_if_max");
-        commandsWithArgs.add("add_if_min");
-        commandsWithArgs.add("remove_all_by_event_id");
+        commandsWithArgs.add("remove_by_id");
         commandsWithArgs.add("count_by_price");
+        commandsWithArgs.add("update");
         }
         public CommandResult create(String s){
             String[] a = s.split(" ");
@@ -65,7 +55,6 @@ public class Factory {
             if (command == null) {
                 throw new UnknownCommandException();
             }
-            //String[] a1 = Arrays.copyOfRange(a, 1, a.length);
             return new CommandResult(command, args1);
         }
     public static boolean checkCommand(String s) {

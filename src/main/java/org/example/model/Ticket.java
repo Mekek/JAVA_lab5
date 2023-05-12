@@ -1,19 +1,18 @@
 package org.example.model;
 
-import org.example.Exception.NullArgumentException;
+import org.example.exception.NullArgumentException;
 
 import java.util.Objects;
-import java.util.Vector;
 
 public class Ticket implements Comparable<Ticket>{
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.LocalDate  creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private Integer price; //Поле не может быть null, Значение поля должно быть больше 0
+    private Float price; //Поле не может быть null, Значение поля должно быть больше 0
     private TicketType type; //Поле не может быть null
     private Event event; //Поле не может быть null
-    public Ticket(Integer id, String name, Coordinates coordinates, java.time.LocalDate  creationDate, Integer price, TicketType type, Event event) {
+    public Ticket(Integer id, String name, Coordinates coordinates, java.time.LocalDate  creationDate, Float price, TicketType type, Event event) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -57,14 +56,14 @@ public class Ticket implements Comparable<Ticket>{
         this.creationDate = creationDate;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         if (price != null) {
             return price;
         }
-        return 0;
+        return Float.valueOf(0);
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -98,8 +97,8 @@ public class Ticket implements Comparable<Ticket>{
     }
     @Override
     public int compareTo(Ticket o) {
-        if ((int) price != o.price) {
-            return Integer.compare(price, o.price);
+        if ((float) price != o.price) {
+            return Float.compare(price, o.price);
         }
         if (creationDate.compareTo(o.creationDate) != 0) {
             return creationDate.compareTo(o.creationDate);
@@ -120,31 +119,6 @@ public class Ticket implements Comparable<Ticket>{
             if (getEvent().getDate() == null) throw new NullArgumentException("нулевое время");
             if (getEvent().getMinAge() <= 0) throw  new IllegalArgumentException("минимальный возраст <= 0");
     }
-
-    public void makeEventId(Ticket ticket, Vector<Ticket> tickets) {
-        for (Ticket ticket1 : tickets) {
-            if (ticket1.getEvent().getName() == ticket.getEvent().getName() || ticket1.getEvent().getDate() == ticket.getEvent().getDate() || ticket1.getEvent().getMinAge() == ticket.getEvent().getMinAge()) {
-                ticket.getEvent().setId(ticket1.getEvent().getId());
-
-                break;
-            }
-        }
-
-        if (ticket.getEvent().getId() == 0) {
-            // ищем макс значение eventId
-            int maxEventId = 0;
-            for (Ticket ticket1 : tickets) {
-                if (ticket1.getEvent().getId() > maxEventId) {
-                    maxEventId = ticket1.getEvent().getId();
-                }
-            }
-            ticket.getEvent().setId(maxEventId + 1);
-        }
-    }
-
-//    public void setEventId(Integer eventId) {
-//        event.se
-//    }
 }
 
 

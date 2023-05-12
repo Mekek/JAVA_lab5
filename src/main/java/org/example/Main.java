@@ -1,26 +1,16 @@
 package org.example;
 
-import org.example.File.Collection;
-import org.example.File.FileManager;
+import org.example.file.Collection;
+import org.example.file.FileManager;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import static java.lang.System.in;
-import static java.lang.System.setOut;
 
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        //ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        //InputStream is = classloader.getResourceAsStream(args[0]);
-        //File file = (new File(Main.class.getClassLoader().getResource(args[0]).toURI()));
-       // System.out.println(file.getParentFile().getAbsolutePath());
-        //System.out.println(file.getAbsolutePath());
         if (args.length == 0){
             System.err.println("передайте название файла");
             System.exit(1);
@@ -36,6 +26,32 @@ public class Main {
             System.exit(2);
         }
 
+        System.out.println("Let's start");
+
+        System.out.println("__________*********____________________________");
+        System.out.println("________***………… ****__________________________");
+        System.out.println("______****……О…….… ****_______________________");
+        System.out.println("__(/////////// …………………***_____________________");
+        System.out.println("___(/////////// .....***____________________");
+        System.out.println("_________**………………... **______________________");
+        System.out.println("___________****)…………. **______________________");
+        System.out.println("________________)……….. **______________________");
+        System.out.println("_________________)……… ** ______________________");
+        System.out.println("_________________)……….. **_____________________");
+        System.out.println("_________________)…………… UU_______________ )))__");
+        System.out.println("________________))……………. UUUU________ ((….)))___");
+        System.out.println("_______________))…………….UUUUUUUU__ ((…… )))____");
+        System.out.println("______________))………………… UUUUUUU ((………)))____");
+        System.out.println("_____________)…………………………………………… )))_____");
+        System.out.println("____________).……………………………………………. )))_____");
+        System.out.println("___________))……………………………………………….)))_____");
+        System.out.println("___________))……………………………………………… )))_____");
+        System.out.println("____________))……………………………………………...)))____");
+        System.out.println("_____________))……………………………………………)))_____");
+        System.out.println("______________))……………………………………… )))_______");
+        System.out.println("_______________))<<<<<<<<<<<<<<<<__________");
+        System.out.println("________________________________________________");
+        System.out.println("Введите команду:");
 
         Scanner scanner = new Scanner(in);
         Factory factory = new Factory(collection);
@@ -44,7 +60,6 @@ public class Main {
             try {
                 if (scanner.hasNextLine()){
                     String s = scanner.nextLine();
-                    //CommandResult command = factory.create(s, collection);
                     CommandResult command = factory.create(s);
                     command.getCommand().execute(command.getArgs());
                     workingProsess = command.getCommand().getFlag();

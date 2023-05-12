@@ -1,8 +1,8 @@
 package org.example.commands;
 
-import org.example.Exception.WrongTypeException;
-import org.example.File.Collection;
-import org.example.Util.HelperUtil;
+import org.example.exception.WrongTypeException;
+import org.example.file.Collection;
+import org.example.utility.HelperUtil;
 import org.example.model.*;
 
 import java.time.LocalDate;
@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
- * The class is responsible for adding an organization to the collection
+ * The class is responsible for adding an ticket to the collection
  */
 public class Add extends Command{
     private Collection collection;
@@ -18,7 +18,7 @@ public class Add extends Command{
         this.collection = collection;
     }
     /**
-     * The function adds an organization to the collection
+     * The function adds an ticket to the collection
      */
     @Override
     public void execute(String[] args) {
@@ -30,52 +30,49 @@ public class Add extends Command{
             Coordinates coordinates = createCoordinates();
             LocalDate creationDate = LocalDate.now();
             System.out.println("Введите стоимость билета:");
-            Integer price = Integer.valueOf(scanner.next());
+            Float price = HelperUtil.inputPrice();
             System.out.println("Выберите тип билета: 0-VIP 1-USUAL 2-BUDGETARY 3-CHEAP");
-            String number = scanner.next();
-            TicketType ticketType = createTicketType(number);
+            TicketType ticketType = HelperUtil.inputEnumConstant();
             Event event = createEvent();
             Ticket ticket = new Ticket(id, name, coordinates, creationDate, price, ticketType, event);
-            ticket.makeEventId(ticket, collection.getTickets());
+
+            ticket.getEvent().setId(TicketBuilder.makeEventId(event.getName(), event.getDate(), event.getMinAge()));
             collection.add(ticket);
         }
         else {
-            String[] params = args[0].split(";");
 
-            Integer id = collection.maxId() + 1;
-//            Integer id = Integer.valueOf(params[0]);
-//            if (id <= 0 ) throw new WrongTypeException("id должен быть положительным");
-//            if (collection.getById(id) != null){
-//                throw new IdException();
-//            }
-            //if (params[1].isEmpty() || params[1].equals("null")) throw new WrongTypeException();
-            String name = params[0];
-            double x = Double.parseDouble(params[1]);
-            float y = Float.parseFloat(params[2]);
-            Coordinates coordinates = new Coordinates(x,y);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            LocalDate creationDate = LocalDate.parse(params[3], formatter);
-            Integer price = Integer.valueOf(params[4]);
-            TicketType ticketType = createTicketType(params[5]);
-
+            System.err .println("Неверное количество аргументов");
+//            String[] params = args[0].split(";");
+//
+//            Integer id = collection.maxId() + 1;
+//
+//            String name = params[0];
+//            double x = Double.parseDouble(params[1]);
+//            float y = Float.parseFloat(params[2]);
+//            Coordinates coordinates = new Coordinates(x,y);
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//            LocalDate creationDate = LocalDate.parse(params[3], formatter);
+//            Float price = Float.valueOf(params[4]);
+//            TicketType ticketType = createTicketType(params[5]);
+//
 //            int eventId = collection.maxId() + 1;
-            String eventName = params[6];
-            if (params[6].isEmpty() || params[6].equals("null")) throw new WrongTypeException("билет не может быть null или пустым");
-            formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            LocalDate eventDate = LocalDate.parse(params[7], formatter);
-            int minAge = Integer.parseInt(params[8]);
-            if (minAge <= 0 ) throw new WrongTypeException("minAge должен быть положительным");
-
-            Event event = new Event(eventId, eventName, eventDate, minAge);
-            Ticket ticket = new Ticket(id, name, coordinates, creationDate, price, ticketType, event);
-            ticket.makeEventId(ticket, collection.getTickets());
-            collection.add(ticket);
+//            String eventName = params[6];
+//            if (params[6].isEmpty() || params[6].equals("null")) throw new WrongTypeException("билет не может быть null или пустым");
+//            formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//            LocalDate eventDate = LocalDate.parse(params[7], formatter);
+//            int minAge = Integer.parseInt(params[8]);
+//            if (minAge <= 0 ) throw new WrongTypeException("minAge должен быть положительным");
+//
+//            Event event = new Event(eventId, eventName, eventDate, minAge);
+//            Ticket ticket = new Ticket(id, name, coordinates, creationDate, price, ticketType, event);;
+//            ticket.getEvent().setId(TicketBuilder.makeEventId(event.getName(), event.getDate(), event.getMinAge()));
+//            collection.add(ticket);
         }
     }
 
     private Event createEvent() {
         Scanner scanner = new Scanner(System.in);
-        Integer eventId = collection.maxId() + 1;
+        Integer eventId = 0;
 
         System.out.println("Введите название события ");
         String eventName = scanner.nextLine();
@@ -83,7 +80,7 @@ public class Add extends Command{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate eventDate = LocalDate.parse(scanner.nextLine(), formatter);
         System.out.println("Введите минимальный допустимы возраст для участников события");
-        Integer minAge = HelperUtil.inputInt();
+        int minAge = HelperUtil.inputInt();
 
         return new Event(eventId, eventName, eventDate, minAge);
     }
@@ -91,12 +88,12 @@ public class Add extends Command{
     private Coordinates createCoordinates(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите x(double):");
-        double x = HelperUtil.inputDouble();
+        double x = HelperUtil.inputDoubleX();
         System.out.println("Введите y(float):");
-        float y = HelperUtil.inputFloat();
+        float y = HelperUtil.inputFloatY();
         return new Coordinates(x,y);
     }
-    private TicketType createTicketType(String s){
+    public static TicketType createTicketType(String s){
         TicketType ticketType;
         if (s.equals("null")){
             System.err.println("значение не может быть null");

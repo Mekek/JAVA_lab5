@@ -1,7 +1,6 @@
 package org.example.commands;
 
-import org.example.File.Collection;
-import org.example.model.Ticket;
+import org.example.file.Collection;
 
 /**
  * The 'RemoveAt' class is a command that remove element by it's index in collection
@@ -13,21 +12,19 @@ public class RemoveAt extends Command{
         this.collection = collection;
     }
     /**
-     * Remove an organization from the collection
+     * Remove an ticket from the collection by its position
      */
     @Override
     public void execute(String[] args) {
-        System.out.println(args.length  );
         if (args.length == 1) {
             int index = Integer.parseInt(args[0]);
             if (index <= collection.getSize() && index >= 0) {
                 collection.removeAt(index);
             }
-            System.err.println("некорректный индекс");
-//            Ticket ticket = collection.getById(id);
-//            if (ticket != null) {
-//                collection.remove(index);
-//            }
+            else {
+                System.err.println("некорректный индекс");
+            }
+
         } else {
             System.err.println("некорректное количество аргументов");
         }

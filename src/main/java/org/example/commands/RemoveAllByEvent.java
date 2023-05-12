@@ -1,6 +1,8 @@
 package org.example.commands;
 
-import org.example.File.Collection;
+import org.example.exception.EmptyCollectionException;
+import org.example.file.Collection;
+import org.example.model.Event;
 
 /**
  * The 'RemoveAllByEventId' class is a command that
@@ -14,11 +16,9 @@ public class RemoveAllByEvent extends Command{
 
     @Override
     public void execute(String[] args) {
-        if (args.length == 1){
-            int eventId = Integer.parseInt(args[0]);
-            collection.removeAllByEventId(eventId);
-        } else {
-            System.out.println("Некорректное количество аргументов");
-        }
+        if (collection.countElements() == 0) throw new EmptyCollectionException();
+        Event event = TicketBuilder.createEvent();
+        event.setId(TicketBuilder.makeEventId(event.getName(), event.getDate(), event.getMinAge()));
+        collection.removeAllByEvent(event);
     }
 }

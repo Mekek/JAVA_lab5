@@ -1,7 +1,7 @@
 package org.example.commands;
 
-import org.example.Exception.EmptyCollectionException;
-import org.example.File.Collection;
+import org.example.exception.EmptyCollectionException;
+import org.example.file.Collection;
 import org.example.model.Ticket;
 
 /**

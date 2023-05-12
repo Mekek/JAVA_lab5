@@ -4,8 +4,9 @@ Mike
 50.0
 01-12-2004
 1000
-VIP
-CoolEvent
+1
+dbdb
 01-12-2004
 19
 show
+execute_script test1.txt

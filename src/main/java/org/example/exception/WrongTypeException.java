@@ -1,4 +1,4 @@
-package org.example.Exception;
+package org.example.exception;
 
 public class WrongTypeException extends RuntimeException{
     public WrongTypeException() {

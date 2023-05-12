@@ -1,7 +1,7 @@
 package org.example.commands;
 
-import org.example.Exception.WrongAmountOfElementsException;
-import org.example.File.Collection;
+import org.example.exception.WrongAmountOfElementsException;
+import org.example.file.Collection;
 import org.example.model.Event;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package org.example.commands;
 
-import org.example.Exception.EmptyCollectionException;
-import org.example.File.Collection;
+import org.example.exception.EmptyCollectionException;
+import org.example.file.Collection;
 import org.example.model.Ticket;
 /**
  * The `ShowCommand` class is a command that prints all the elements of the collection in string
@@ -14,7 +14,7 @@ public class Show extends Command{
     }
 
     /**
-     * * Prints all the organizations in the collection
+     * * Prints all the tickets in the collection
      * @param args the arguments passed to the command.
      */
     @Override

@@ -1,6 +1,6 @@
 package org.example.commands;
 
-import org.example.File.Collection;
+import org.example.file.Collection;
 
 /**
  * The 'Info' class provides information about the collection.

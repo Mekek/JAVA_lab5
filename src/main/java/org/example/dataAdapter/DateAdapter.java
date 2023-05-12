@@ -1,4 +1,4 @@
-package org.example.DataAdapter;
+package org.example.dataAdapter;
 
 import com.google.gson.*;
 

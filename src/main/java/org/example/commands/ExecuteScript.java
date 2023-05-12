@@ -2,7 +2,7 @@ package org.example.commands;
 
 import org.example.CommandResult;
 import org.example.Factory;
-import org.example.File.Collection;
+import org.example.file.Collection;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,7 +17,6 @@ import java.util.Vector;
 public class ExecuteScript extends Command{
     private Collection collection;
     private Factory factory;
-    //private static ArrayList<String> filenames;
     private static Vector<String> filenames;
     public ExecuteScript(Collection collection, Factory factory) {
         this.factory = factory;
@@ -32,11 +31,11 @@ public class ExecuteScript extends Command{
        String filename = args[0];
        if (filenames.contains(filename)){
            filenames.clear();
-           throw new IllegalArgumentException("бесконечный вызов файлов");
+           throw new IllegalArgumentException("бесконечный рекурсивный вызов файлов");
        }
        if (!new File(filename).exists()){
            filenames.clear();
-           throw new IllegalArgumentException("файл с таким названием не существует");
+           throw new IllegalArgumentException("файла с таким названием не существует");
        }
        if (! new File(filename).isFile()){
            filenames.clear();

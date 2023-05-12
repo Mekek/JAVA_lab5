@@ -1,6 +1,7 @@
-package org.example.Util;
+package org.example.utility;
 
-import org.example.Exception.NullArgumentException;
+import org.example.exception.NullArgumentException;
+import org.example.commands.Add;
 import org.example.model.*;
 
 import java.time.LocalDate;
@@ -88,7 +89,7 @@ public class HelperUtil {
         return result;
     }
 
-    public static float inputFloat() {
+    public static float inputFloatY() {
         Scanner scanner = new Scanner(System.in);
         float result;
         while (true) {
@@ -102,6 +103,45 @@ public class HelperUtil {
         }
         return result;
     }
+
+    public static float inputPrice() {
+        Scanner scanner = new Scanner(System.in);
+        float result;
+        while (true) {
+            String s = scanner.next();
+            if (checkFloat(s)) {
+                if (Float.parseFloat(s)  > 0) {
+                    result = Float.parseFloat(s);
+                    break;
+                }
+                else {
+                    System.err.println("Цена должна быть больше 0");
+                }
+            } else {
+                System.err.println("нужен float формат данных");
+            }
+        }
+        return result;
+    }
+
+
+    public static TicketType inputEnumConstant() {
+        Scanner scanner = new Scanner(System.in);
+        TicketType ticketType;
+        while (true) {
+            String s = scanner.next();
+
+            if (Integer.parseInt(s) >= 0 && Integer.parseInt(s) < TicketType.values().length) {
+                ticketType = Add.createTicketType(s);
+                break;
+            } else {
+                System.err.println("введенное число находится вне диапозона");
+            }
+
+        }
+        return ticketType;
+    }
+
 
     public static float inputFloatSalary() {
         Scanner scanner = new Scanner(System.in);
@@ -147,7 +187,7 @@ public class HelperUtil {
         }
         return result;
     }
-    public static void checkWorkers(Long id, String name, Coordinates coordinates, LocalDate creationDate, Float price, TicketType ticketType, Integer eventId, String eventName, LocalDateTime eventDate, Integer minAge){
+    public static void checkTickets(Long id, String name, Coordinates coordinates, LocalDate creationDate, Float price, TicketType ticketType, Integer eventId, String eventName, LocalDateTime eventDate, Integer minAge){
         if (id == null) throw new NullArgumentException("id не может быть null");
         if (id <= 0) throw new IllegalArgumentException("id не положительный");
         if (Objects.equals(name,"null") || name == null || name.isEmpty() || name.isBlank()) throw new NullArgumentException("имя пустое");
@@ -162,14 +202,19 @@ public class HelperUtil {
         if (minAge <= 0) throw new IllegalArgumentException("минимальный возраст <= 0");
     }
 
-    public static double inputDouble() {
+    public static double inputDoubleX() {
         Scanner scanner = new Scanner(System.in);
         double result;
         while (true) {
             String s = scanner.next();
             if (checkDouble(s)) {
-                result = Double.parseDouble(s);
-                break;
+                if (Double.parseDouble(s) > -222) {
+                    result = Double.parseDouble(s);
+                    break;
+                }
+                else {
+                    System.err.println("x-координата должна быть больше -222");
+                }
             } else {
                 System.err.println("нужен double формат данных");
             }
@@ -185,5 +230,6 @@ public class HelperUtil {
         }
         return true;
     }
+
 }
 

@@ -1,4 +1,4 @@
-package org.example.Exception;
+package org.example.exception;
 
 public class UnknownCommandException extends RuntimeException{
     public UnknownCommandException() {

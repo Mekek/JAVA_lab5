@@ -7,7 +7,7 @@
       "y": 1234.0
     },
     "creationDate": "2023-01-28",
-    "price": 1234,
+    "price": 1234.0,
     "type": "BUDGETARY",
     "event": {
       "id": 1,
@@ -24,7 +24,7 @@
       "y": 725.0
     },
     "creationDate": "2023-02-17",
-    "price": 750,
+    "price": 750.0,
     "type": "CHEAP",
     "event": {
       "id": 2,
@@ -41,7 +41,7 @@
       "y": 750.0
     },
     "creationDate": "2023-02-17",
-    "price": 750,
+    "price": 750.0,
     "type": "CHEAP",
     "event": {
       "id": 2,
@@ -58,7 +58,7 @@
       "y": 6845.0
     },
     "creationDate": "2023-01-14",
-    "price": 1500,
+    "price": 1500.0,
     "type": "USUAL",
     "event": {
       "id": 3,
@@ -75,11 +75,45 @@
       "y": 521.0
     },
     "creationDate": "2023-05-04",
-    "price": 5111,
+    "price": 5111.0,
     "type": "VIP",
     "event": {
-      "id": 5,
+      "id": 4,
       "name": "Para",
+      "date": "2004-01-01",
+      "minAge": 18
+    }
+  },
+  {
+    "id": 6,
+    "name": "liza",
+    "coordinates": {
+      "x": 10.0,
+      "y": 20.9
+    },
+    "creationDate": "2023-05-09",
+    "price": 10004.0,
+    "type": "USUAL",
+    "event": {
+      "id": 5,
+      "name": "dskfgldg",
+      "date": "2005-02-01",
+      "minAge": 15
+    }
+  },
+  {
+    "id": 7,
+    "name": "leo",
+    "coordinates": {
+      "x": 10.0,
+      "y": 3.0
+    },
+    "creationDate": "2023-05-12",
+    "price": 377.0,
+    "type": "USUAL",
+    "event": {
+      "id": 3,
+      "name": "svs",
       "date": "2004-01-01",
       "minAge": 18
     }
